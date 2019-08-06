@@ -1,0 +1,111 @@
+### Starting build.
+# Target: main.ml.depends, tags: { package(Z3), package(batteries), package(str), extension:ml, file:main.ml, include, ocaml, ocamldep, quiet, traverse }
+ocamlfind ocamldep -package Z3 -package str -package batteries -modules main.ml > main.ml.depends
+# Target: eval.ml.depends, tags: { package(Z3), package(batteries), package(str), extension:ml, file:eval.ml, include, ocaml, ocamldep, quiet, traverse }
+ocamlfind ocamldep -package Z3 -package str -package batteries -modules eval.ml > eval.ml.depends
+# Target: lang.ml.depends, tags: { package(Z3), package(batteries), package(str), extension:ml, file:lang.ml, include, ocaml, ocamldep, quiet, traverse }
+ocamlfind ocamldep -package Z3 -package str -package batteries -modules lang.ml > lang.ml.depends
+# Target: util.ml.depends, tags: { package(Z3), package(batteries), package(str), extension:ml, file:util.ml, include, ocaml, ocamldep, quiet, traverse }
+ocamlfind ocamldep -package Z3 -package str -package batteries -modules util.ml > util.ml.depends
+# Target: util.cmo, tags: { package(Z3), package(batteries), package(str), byte, compile, extension:cmo, extension:ml, file:util.cmo, file:util.ml, implem, include, ocaml, quiet, traverse }
+ocamlfind ocamlc -c -package Z3 -package str -package batteries -I TestML -o util.cmo util.ml
+# Target: options.ml.depends, tags: { package(Z3), package(batteries), package(str), extension:ml, file:options.ml, include, ocaml, ocamldep, quiet, traverse }
+ocamlfind ocamldep -package Z3 -package str -package batteries -modules options.ml > options.ml.depends
+# Target: print.ml.depends, tags: { package(Z3), package(batteries), package(str), extension:ml, file:print.ml, include, ocaml, ocamldep, quiet, traverse }
+ocamlfind ocamldep -package Z3 -package str -package batteries -modules print.ml > print.ml.depends
+# Target: lang.cmo, tags: { package(Z3), package(batteries), package(str), byte, compile, extension:cmo, extension:ml, file:lang.cmo, file:lang.ml, implem, include, ocaml, quiet, traverse }
+ocamlfind ocamlc -c -package Z3 -package str -package batteries -I TestML -o lang.cmo lang.ml
+# Target: options.cmo, tags: { package(Z3), package(batteries), package(str), byte, compile, extension:cmo, extension:ml, file:options.cmo, file:options.ml, implem, include, ocaml, quiet, traverse }
+ocamlfind ocamlc -c -package Z3 -package str -package batteries -I TestML -o options.cmo options.ml
+# Target: print.cmo, tags: { package(Z3), package(batteries), package(str), byte, compile, extension:cmo, extension:ml, file:print.cmo, file:print.ml, implem, include, ocaml, quiet, traverse }
+ocamlfind ocamlc -c -package Z3 -package str -package batteries -I TestML -o print.cmo print.ml
+# Target: preproc.ml.depends, tags: { package(Z3), package(batteries), package(str), extension:ml, file:preproc.ml, include, ocaml, ocamldep, quiet, traverse }
+ocamlfind ocamldep -package Z3 -package str -package batteries -modules preproc.ml > preproc.ml.depends
+# Target: lexer.mll, tags: { package(Z3), package(batteries), package(str), extension:mll, file:lexer.mll, lexer, ocaml, ocamllex, quiet, traverse }
+ocamllex.opt -q lexer.mll
+# Target: lexer.ml.depends, tags: { package(Z3), package(batteries), package(str), extension:ml, file:lexer.ml, include, ocaml, ocamldep, quiet, traverse }
+ocamlfind ocamldep -package Z3 -package str -package batteries -modules lexer.ml > lexer.ml.depends # cached
+# Target: parser.mly.depends, tags: { package(Z3), package(batteries), package(str), extension:mly, file:parser.mly, infer, menhir_ocamldep, ocaml, ocamldep, quiet, traverse }
+menhir --raw-depend --ocamldep 'ocamlfind ocamldep -modules' parser.mly > parser.mly.depends
+# Target: parser.mly, tags: { package(Z3), package(batteries), package(str), byte, compile, extension:ml, extension:mly, file:parser.ml, file:parser.mly, include, infer, menhir, ocaml, parser, quiet, traverse }
+menhir --ocamlc 'ocamlfind ocamlc -package Z3 -package str -package batteries -I TestML' --infer parser.mly
++ menhir --ocamlc 'ocamlfind ocamlc -package Z3 -package str -package batteries -I TestML' --infer parser.mly
+Warning: 5 states have shift/reduce conflicts.
+Warning: 37 shift/reduce conflicts were arbitrarily resolved.
+# Target: parser.mli.depends, tags: { package(Z3), package(batteries), package(str), extension:mli, file:parser.mli, ocaml, ocamldep, quiet, traverse }
+ocamlfind ocamldep -package Z3 -package str -package batteries -modules parser.mli > parser.mli.depends # cached
+# Target: parser.cmi, tags: { package(Z3), package(batteries), package(str), byte, compile, extension:mli, file:parser.mli, interf, ocaml, quiet, traverse }
+ocamlfind ocamlc -c -package Z3 -package str -package batteries -I TestML -o parser.cmi parser.mli # cached
+# Target: lexer.cmo, tags: { package(Z3), package(batteries), package(str), byte, compile, extension:cmo, extension:ml, file:lexer.cmo, file:lexer.ml, implem, include, ocaml, quiet, traverse }
+ocamlfind ocamlc -c -package Z3 -package str -package batteries -I TestML -o lexer.cmo lexer.ml # cached
+# Target: TestML/testGenerator.ml.depends, tags: { package(Z3), package(batteries), package(str), extension:ml, file:TestML/testGenerator.ml, include, ocaml, ocamldep, quiet, traverse }
+ocamlfind ocamldep -package Z3 -package str -package batteries -modules TestML/testGenerator.ml > TestML/testGenerator.ml.depends
+# Target: eval.cmo, tags: { package(Z3), package(batteries), package(str), byte, compile, extension:cmo, extension:ml, file:eval.cmo, file:eval.ml, implem, include, ocaml, quiet, traverse }
+ocamlfind ocamlc -c -package Z3 -package str -package batteries -I TestML -o eval.cmo eval.ml
+# Target: normalize.ml.depends, tags: { package(Z3), package(batteries), package(str), extension:ml, file:normalize.ml, include, ocaml, ocamldep, quiet, traverse }
+ocamlfind ocamldep -package Z3 -package str -package batteries -modules normalize.ml > normalize.ml.depends
+# Target: TestML/sym_exec.ml.depends, tags: { package(Z3), package(batteries), package(str), extension:ml, file:TestML/sym_exec.ml, include, ocaml, ocamldep, quiet, traverse }
+ocamlfind ocamldep -package Z3 -package str -package batteries -modules TestML/sym_exec.ml > TestML/sym_exec.ml.depends
+# Target: TestML/formula_normalize.ml.depends, tags: { package(Z3), package(batteries), package(str), extension:ml, file:TestML/formula_normalize.ml, include, ocaml, ocamldep, quiet, traverse }
+ocamlfind ocamldep -package Z3 -package str -package batteries -modules TestML/formula_normalize.ml > TestML/formula_normalize.ml.depends
+# Target: TestML/symbol_lang2.ml.depends, tags: { package(Z3), package(batteries), package(str), extension:ml, file:TestML/symbol_lang2.ml, include, ocaml, ocamldep, quiet, traverse }
+ocamlfind ocamldep -package Z3 -package str -package batteries -modules TestML/symbol_lang2.ml > TestML/symbol_lang2.ml.depends
+# Target: TestML/symbol_lang2.cmo, tags: { package(Z3), package(batteries), package(str), byte, compile, extension:cmo, extension:ml, file:TestML/symbol_lang2.cmo, file:TestML/symbol_lang2.ml, implem, include, ocaml, quiet, traverse }
+ocamlfind ocamlc -c -package Z3 -package str -package batteries -I TestML -o TestML/symbol_lang2.cmo TestML/symbol_lang2.ml
+# Target: TestML/z3_solve.ml.depends, tags: { package(Z3), package(batteries), package(str), extension:ml, file:TestML/z3_solve.ml, include, ocaml, ocamldep, quiet, traverse }
+ocamlfind ocamldep -package Z3 -package str -package batteries -modules TestML/z3_solve.ml > TestML/z3_solve.ml.depends
+# Target: type.ml.depends, tags: { package(Z3), package(batteries), package(str), extension:ml, file:type.ml, include, ocaml, ocamldep, quiet, traverse }
+ocamlfind ocamldep -package Z3 -package str -package batteries -modules type.ml > type.ml.depends
+# Target: type.cmo, tags: { package(Z3), package(batteries), package(str), byte, compile, extension:cmo, extension:ml, file:type.cmo, file:type.ml, implem, include, ocaml, quiet, traverse }
+ocamlfind ocamlc -c -package Z3 -package str -package batteries -I TestML -o type.cmo type.ml
+# Target: TestML/formula_normalize.cmo, tags: { package(Z3), package(batteries), package(str), byte, compile, extension:cmo, extension:ml, file:TestML/formula_normalize.cmo, file:TestML/formula_normalize.ml, implem, include, ocaml, quiet, traverse }
+ocamlfind ocamlc -c -package Z3 -package str -package batteries -I TestML -o TestML/formula_normalize.cmo TestML/formula_normalize.ml
+# Target: TestML/z3_solve.cmo, tags: { package(Z3), package(batteries), package(str), byte, compile, extension:cmo, extension:ml, file:TestML/z3_solve.cmo, file:TestML/z3_solve.ml, implem, include, ocaml, quiet, traverse }
+ocamlfind ocamlc -c -package Z3 -package str -package batteries -I TestML -o TestML/z3_solve.cmo TestML/z3_solve.ml
+# Target: normalize.cmo, tags: { package(Z3), package(batteries), package(str), byte, compile, extension:cmo, extension:ml, file:normalize.cmo, file:normalize.ml, implem, include, ocaml, quiet, traverse }
+ocamlfind ocamlc -c -package Z3 -package str -package batteries -I TestML -o normalize.cmo normalize.ml
+# Target: TestML/sym_exec.cmo, tags: { package(Z3), package(batteries), package(str), byte, compile, extension:cmo, extension:ml, file:TestML/sym_exec.cmo, file:TestML/sym_exec.ml, implem, include, ocaml, quiet, traverse }
+ocamlfind ocamlc -c -package Z3 -package str -package batteries -I TestML -o TestML/sym_exec.cmo TestML/sym_exec.ml
+# Target: preproc.cmo, tags: { package(Z3), package(batteries), package(str), byte, compile, extension:cmo, extension:ml, file:preproc.cmo, file:preproc.ml, implem, include, ocaml, quiet, traverse }
+ocamlfind ocamlc -c -package Z3 -package str -package batteries -I TestML -o preproc.cmo preproc.ml
+# Target: TestML/testGenerator.cmo, tags: { package(Z3), package(batteries), package(str), byte, compile, extension:cmo, extension:ml, file:TestML/testGenerator.cmo, file:TestML/testGenerator.ml, implem, include, ocaml, quiet, traverse }
+ocamlfind ocamlc -c -package Z3 -package str -package batteries -I TestML -o TestML/testGenerator.cmo TestML/testGenerator.ml
+# Target: main.cmo, tags: { package(Z3), package(batteries), package(str), byte, compile, extension:cmo, extension:ml, file:main.cmo, file:main.ml, implem, include, ocaml, quiet, traverse }
+ocamlfind ocamlc -c -package Z3 -package str -package batteries -I TestML -o main.cmo main.ml
+# Target: util.cmx, tags: { package(Z3), package(batteries), package(str), compile, extension:cmx, extension:ml, file:util.cmx, file:util.ml, implem, include, native, ocaml, quiet, traverse }
+ocamlfind ocamlopt -c -package Z3 -package str -package batteries -I TestML -o util.cmx util.ml
+# Target: lang.cmx, tags: { package(Z3), package(batteries), package(str), compile, extension:cmx, extension:ml, file:lang.cmx, file:lang.ml, implem, include, native, ocaml, quiet, traverse }
+ocamlfind ocamlopt -c -package Z3 -package str -package batteries -I TestML -o lang.cmx lang.ml
+# Target: options.cmx, tags: { package(Z3), package(batteries), package(str), compile, extension:cmx, extension:ml, file:options.cmx, file:options.ml, implem, include, native, ocaml, quiet, traverse }
+ocamlfind ocamlopt -c -package Z3 -package str -package batteries -I TestML -o options.cmx options.ml
+# Target: print.cmx, tags: { package(Z3), package(batteries), package(str), compile, extension:cmx, extension:ml, file:print.cmx, file:print.ml, implem, include, native, ocaml, quiet, traverse }
+ocamlfind ocamlopt -c -package Z3 -package str -package batteries -I TestML -o print.cmx print.ml
+# Target: parser.ml.depends, tags: { package(Z3), package(batteries), package(str), extension:ml, file:parser.ml, include, ocaml, ocamldep, quiet, traverse }
+ocamlfind ocamldep -package Z3 -package str -package batteries -modules parser.ml > parser.ml.depends # cached
+# Target: parser.cmx, tags: { package(Z3), package(batteries), package(str), compile, extension:cmx, extension:ml, file:parser.cmx, file:parser.ml, implem, include, native, ocaml, quiet, traverse }
+ocamlfind ocamlopt -c -package Z3 -package str -package batteries -I TestML -o parser.cmx parser.ml # cached
+# Target: lexer.cmx, tags: { package(Z3), package(batteries), package(str), compile, extension:cmx, extension:ml, file:lexer.cmx, file:lexer.ml, implem, include, native, ocaml, quiet, traverse }
+ocamlfind ocamlopt -c -package Z3 -package str -package batteries -I TestML -o lexer.cmx lexer.ml # cached
+# Target: eval.cmx, tags: { package(Z3), package(batteries), package(str), compile, extension:cmx, extension:ml, file:eval.cmx, file:eval.ml, implem, include, native, ocaml, quiet, traverse }
+ocamlfind ocamlopt -c -package Z3 -package str -package batteries -I TestML -o eval.cmx eval.ml
+# Target: TestML/symbol_lang2.cmx, tags: { package(Z3), package(batteries), package(str), compile, extension:cmx, extension:ml, file:TestML/symbol_lang2.cmx, file:TestML/symbol_lang2.ml, implem, include, native, ocaml, quiet, traverse }
+ocamlfind ocamlopt -c -package Z3 -package str -package batteries -I TestML -o TestML/symbol_lang2.cmx TestML/symbol_lang2.ml
+# Target: type.cmx, tags: { package(Z3), package(batteries), package(str), compile, extension:cmx, extension:ml, file:type.cmx, file:type.ml, implem, include, native, ocaml, quiet, traverse }
+ocamlfind ocamlopt -c -package Z3 -package str -package batteries -I TestML -o type.cmx type.ml
+# Target: TestML/formula_normalize.cmx, tags: { package(Z3), package(batteries), package(str), compile, extension:cmx, extension:ml, file:TestML/formula_normalize.cmx, file:TestML/formula_normalize.ml, implem, include, native, ocaml, quiet, traverse }
+ocamlfind ocamlopt -c -package Z3 -package str -package batteries -I TestML -o TestML/formula_normalize.cmx TestML/formula_normalize.ml
+# Target: TestML/z3_solve.cmx, tags: { package(Z3), package(batteries), package(str), compile, extension:cmx, extension:ml, file:TestML/z3_solve.cmx, file:TestML/z3_solve.ml, implem, include, native, ocaml, quiet, traverse }
+ocamlfind ocamlopt -c -package Z3 -package str -package batteries -I TestML -o TestML/z3_solve.cmx TestML/z3_solve.ml
+# Target: normalize.cmx, tags: { package(Z3), package(batteries), package(str), compile, extension:cmx, extension:ml, file:normalize.cmx, file:normalize.ml, implem, include, native, ocaml, quiet, traverse }
+ocamlfind ocamlopt -c -package Z3 -package str -package batteries -I TestML -o normalize.cmx normalize.ml
+# Target: TestML/sym_exec.cmx, tags: { package(Z3), package(batteries), package(str), compile, extension:cmx, extension:ml, file:TestML/sym_exec.cmx, file:TestML/sym_exec.ml, implem, include, native, ocaml, quiet, traverse }
+ocamlfind ocamlopt -c -package Z3 -package str -package batteries -I TestML -o TestML/sym_exec.cmx TestML/sym_exec.ml
+# Target: preproc.cmx, tags: { package(Z3), package(batteries), package(str), compile, extension:cmx, extension:ml, file:preproc.cmx, file:preproc.ml, implem, include, native, ocaml, quiet, traverse }
+ocamlfind ocamlopt -c -package Z3 -package str -package batteries -I TestML -o preproc.cmx preproc.ml
+# Target: TestML/testGenerator.cmx, tags: { package(Z3), package(batteries), package(str), compile, extension:cmx, extension:ml, file:TestML/testGenerator.cmx, file:TestML/testGenerator.ml, implem, include, native, ocaml, quiet, traverse }
+ocamlfind ocamlopt -c -package Z3 -package str -package batteries -I TestML -o TestML/testGenerator.cmx TestML/testGenerator.ml
+# Target: main.cmx, tags: { package(Z3), package(batteries), package(str), compile, extension:cmx, extension:ml, file:main.cmx, file:main.ml, implem, include, native, ocaml, quiet, traverse }
+ocamlfind ocamlopt -c -package Z3 -package str -package batteries -I TestML -o main.cmx main.ml
+# Target: main.native, tags: { package(Z3), package(batteries), package(str), dont_link_with, extension:native, file:main.native, link, native, ocaml, program, quiet, traverse }
+ocamlfind ocamlopt -linkpkg -package Z3 -package str -package batteries -I TestML util.cmx lang.cmx print.cmx TestML/symbol_lang2.cmx TestML/formula_normalize.cmx type.cmx TestML/z3_solve.cmx options.cmx TestML/sym_exec.cmx eval.cmx normalize.cmx TestML/testGenerator.cmx parser.cmx lexer.cmx preproc.cmx main.cmx -o main.native # cached
+# Compilation successful.

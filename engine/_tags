@@ -1,0 +1,6 @@
+true: package(batteries)
+true: package(str)
+true: package(Z3)
+
+<TestML/**>: include
+<*.ml>: include
