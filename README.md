@@ -28,10 +28,9 @@ You can install and use Z3 OCaml binding at Z3 github repository (https://github
 
 engine stores implemantation of TestML. More specifically, you can see that the main parts of TestML are implemented in the following files:
 
-```bash
-engine/TestML/testGenerator.ml: Overall algirthm and symbolic test case generation
-engine/TestML/sym_exec.ml: Symbolic verification
-```
+- engine/TestML/testGenerator.ml: Overall algirthm and symbolic test case generation 
+- engine/TestML/sym_exec.ml: Symbolic verification
+
 
 benchmarks stores 4,060 students submission we used in evaluation. All sub directories of ``benchmarks`` contains submissions that are correct or incorrect, a solution, set of test cases, and a grading function to test (if it required).
 
