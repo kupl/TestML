@@ -4,7 +4,7 @@ open Options
 open Preproc
 
 (* Framework for learning functional programming *)
-let usage_msg = "main.native -run (or -fix) -submission <filename> -solution <filename>"
+let usage_msg = "main.native -run (or -gentest) -submission <filename> -solution <filename>"
 
 let is_same_type : prog -> prog -> unit
 = fun pgm cpgm ->
