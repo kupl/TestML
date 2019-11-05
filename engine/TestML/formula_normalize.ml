@@ -520,30 +520,38 @@ let rec normalize_pc2 : path_cond -> path_cond -> path_cond
       match sv' with
       | EQop (eq, sv1, sv2) ->
         let sv' =
-          begin match sv1 with
-          | Aop (op, sv, Int n) -> EQop (eq, sv, normalize_sym_val (Aop (inverse_op op, sv2, Int n)))
-          | _ -> sv'
-          end
+          (try 
+            begin match sv1 with
+            | Aop (op, sv, Int n) -> EQop (eq, sv, normalize_sym_val (Aop (inverse_op op, sv2, Int n)))
+            | _ -> sv'
+            end
+          with _ -> sv')
         in
         let sv' = 
-          begin match sv2 with
-          | Aop (op, sv, Int n) -> EQop (eq, normalize_sym_val (Aop (inverse_op op, sv1, Int n)), sv)
-          | _ -> sv'
-          end
+          (try 
+            begin match sv2 with
+            | Aop (op, sv, Int n) -> EQop (eq, normalize_sym_val (Aop (inverse_op op, sv1, Int n)), sv)
+            | _ -> sv'
+            end
+          with _ -> sv')
         in
         BatSet.add sv' pc'
       | ABop (comp, sv1, sv2) ->
         let sv' = 
-          begin match sv1 with
-          | Aop (op, sv, Int n) -> ABop (comp, sv, normalize_sym_val (Aop (inverse_op op, sv2, Int n)))
-          | _ -> sv'
-          end
+          (try 
+            begin match sv1 with
+            | Aop (op, sv, Int n) -> ABop (comp, sv, normalize_sym_val (Aop (inverse_op op, sv2, Int n)))
+            | _ -> sv'
+            end
+          with _ -> sv')
         in
         let sv' = 
-          begin match sv2 with
-          | Aop (op, sv, Int n) -> ABop (comp, normalize_sym_val (Aop (inverse_op op, sv1, Int n)), sv)
-          | _ -> sv'
-          end
+          (try 
+            begin match sv2 with
+            | Aop (op, sv, Int n) -> ABop (comp, normalize_sym_val (Aop (inverse_op op, sv1, Int n)), sv)
+            | _ -> sv'
+            end
+          with _ -> sv')
         in
         let sv' =
           begin match sv1, sv2 with
